@@ -2,11 +2,13 @@ package com.tjoeun.a191105_01_listview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tjoeun.a191105_01_listview.adapters.RoomDataAdapter
 import com.tjoeun.a191105_01_listview.datas.RoomData
 
 class MainActivity : AppCompatActivity() {
 
     var roomList = ArrayList<RoomData>()
+    var roomAdapter:RoomDataAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         addRooms()
+
+        roomAdapter = RoomDataAdapter(this,R.layout.room_list_item, roomList)
+
+        roomListView.adapter = roomAdapter
 
     }
 
